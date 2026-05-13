@@ -1,0 +1,332 @@
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes premium-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.99);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    5% {
+        opacity: 0.92;
+    }
+
+    10% {
+        opacity: 0.88;
+    }
+
+    15% {
+        opacity: 0.95;
+    }
+
+    20% {
+        opacity: 0.84;
+    }
+
+    25% {
+        opacity: 0.96;
+    }
+
+    30% {
+        opacity: 0.9;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0.94;
+    }
+
+    50% {
+        opacity: 0.96;
+    }
+
+    60% {
+        opacity: 0.9;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.92;
+    }
+
+    90% {
+        opacity: 0.95;
+    }
+}
+
+/* Portrait scan-reveal top to bottom */
+@keyframes portrait-reveal {
+    0% {
+        clip-path: inset(0 0 100% 0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        clip-path: inset(0 0 0% 0);
+        opacity: 1;
+    }
+}
+
+/* Scanline drift */
+@keyframes scanline-shift {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 4px;
+    }
+}
+
+/* RGB split on title text */
+@keyframes glitch-text {
+    0% {
+        clip-path: inset(42% 0 58% 0);
+        transform: translate(-2px, 1px);
+        text-shadow: -2px 0 #ff0000, 2px 0 #00ffff;
+    }
+
+    20% {
+        clip-path: inset(90% 0 2% 0);
+        transform: translate(2px, -1px);
+        text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+    }
+
+    40% {
+        clip-path: inset(44% 0 2% 0);
+        transform: translate(-1px, 2px);
+        text-shadow: -1px 0 #ff0000, 1px 0 #00ffff;
+    }
+
+    60% {
+        clip-path: inset(22% 0 60% 0);
+        transform: translate(1px, -2px);
+        text-shadow: 1px 0 #ff0000, -1px 0 #00ffff;
+    }
+
+    80% {
+        clip-path: inset(55% 0 5% 0);
+        transform: translate(-2px, 1px);
+        text-shadow: -2px 0 #ff0000, 2px 0 #00ffff;
+    }
+
+    100% {
+        clip-path: inset(60% 0 40% 0);
+        transform: translate(0);
+        text-shadow: none;
+    }
+}
+
+@keyframes glitch-skew {
+    0% {
+        transform: skew(0deg);
+    }
+
+    20% {
+        transform: skew(-2deg);
+    }
+
+    40% {
+        transform: skew(2deg);
+    }
+
+    60% {
+        transform: skew(-1deg);
+    }
+
+    80% {
+        transform: skew(1deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+/* Chroma aberration layers */
+@keyframes chroma-shift {
+
+    0%,
+    100% {
+        transform: translateX(-3px);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateX(-5px);
+        opacity: 0.6;
+    }
+}
+
+@keyframes chroma-shift-cyan {
+
+    0%,
+    100% {
+        transform: translateX(3px);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateX(5px);
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+   GLITCH UTILITY
+   ============================================ */
+.glitch-text {
+    position: relative;
+}
+
+.glitch-text.glitching {
+    animation: glitch-text 0.18s steps(2) forwards,
+        glitch-skew 0.18s ease forwards;
+}
+
+/* ============================================
+   PAGE LOAD SEQUENCE
+   ============================================ */
+.hero-portrait,
+.nav-brand,
+.hero-title-left,
+.hero-title-right,
+.hero-info,
+.hero-status,
+.hero-top-right,
+.section-number,
+.nav-links {
+    opacity: 0;
+}
+
+.page-loaded .hero-portrait {
+    animation: portrait-reveal 1.25s cubic-bezier(0.77, 0, 0.175, 1) 0.1s forwards;
+}
+
+.page-loaded .nav-brand {
+    animation: premium-reveal 0.95s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s forwards;
+}
+
+.page-loaded .hero-title-left {
+    animation: premium-reveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.25s forwards;
+}
+
+.page-loaded .hero-title-right {
+    animation: premium-reveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.45s forwards;
+}
+
+.page-loaded .hero-info {
+    animation: premium-reveal 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.45s forwards;
+}
+
+.page-loaded .hero-status {
+    animation: premium-reveal 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.75s forwards;
+}
+
+.page-loaded .hero-top-right {
+    animation: premium-reveal 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.95s forwards;
+}
+
+.page-loaded .section-number {
+    animation: premium-reveal 1s ease 1.05s forwards;
+}
+
+.page-loaded .hero-title {
+    animation: flicker 0.5s ease-in-out 1.65s;
+}
+
+.page-loaded .nav-links {
+    animation: premium-reveal 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.2s forwards;
+}
+
+/* ============================================
+   PORTRAIT OVERLAY ANIMATIONS
+   ============================================ */
+.portrait-scanlines {
+    animation: scanline-shift 8s linear infinite;
+}
+
+.portrait-chroma--red {
+    animation: chroma-shift 4s ease-in-out infinite;
+}
+
+.portrait-chroma--cyan {
+    animation: chroma-shift-cyan 4s ease-in-out infinite 0.5s;
+}
+
+/* ============================================
+   STAGGERED CHILDREN
+   ============================================ */
+.stagger-children>* {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger-children.visible>* {
+    animation: fade-in-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: calc(var(--stagger-index, 0) * 80ms);
+}
